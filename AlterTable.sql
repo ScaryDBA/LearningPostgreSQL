@@ -55,3 +55,20 @@ CONSTRAINT saledetailpk PRIMARY KEY (saledetailid));
 
 
 --add a column
+ALTER TABLE sales.saledetail ADD COLUMN saledesc VARCHAR(50);
+
+--add a column with safety
+ALTER TABLE sales.saledetail ADD COLUMN IF NOT EXISTS saledesc VARCHAR(50);
+
+
+--remove a column
+ALTER TABLE sales.saledetail DROP COLUMN saledesc;
+
+--remove a column with safety
+ALTER TABLE sales.saledetail DROP COLUMN IF EXISTS saledesc;
+
+
+
+--add a check constraint
+ALTER TABLE sales.saledetail ADD CHECK (itemtotal > '0');
+
