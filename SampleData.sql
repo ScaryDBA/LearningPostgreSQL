@@ -45,9 +45,9 @@ VALUES
 ('FusionX'),('DMR');
 
 INSERT INTO radio.radios
-(radio_name,manufacturer_id,connectortype_id,digitalmde_id)
+(radio_name,manufacturer_id,connectortype_id,digitalmode_id)
 VALUES
-('FT3D'),2,2,1),('UV5R',3,3,NULL),('G90',6,4,NULL);
+('FT3D',2,2,1),('UV5R',3,3,NULL),('G90',6,4,NULL);
 
 INSERT INTO radio.radioantenna
 (radio_id,antenna_id)
@@ -68,3 +68,4 @@ VALUES
 (ARRAY['KC1KCE', 'KI5EGH', 'KJ7VSF','N4DAD','KD7IFN']),
 (ARRAY['KN4XP','KA0GAV','NM8GS','W3DET']),
 (ARRAY['W3DET','N4AUG','KC3WRX','WA9EBX','W1OW','K4RFH','W9DC','WJ8L','N4HES'])
+
