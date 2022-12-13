@@ -1,0 +1,33 @@
+{
+	"folders": {},
+	"connections": {
+		"postgres-jdbc-1850be491d9-4a402cb27870ec32": {
+			"provider": "postgresql",
+			"driver": "postgres-jdbc",
+			"name": "hamshackradio",
+			"save-password": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "5432",
+				"database": "hamshackradio",
+				"url": "jdbc:postgresql://localhost:5432/hamshackradio",
+				"configurationType": "MANUAL",
+				"home": "postgresql_client",
+				"type": "dev",
+				"provider-properties": {},
+				"auth-model": "native"
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"auto-close-transactions": false
+		}
+	}
+}
