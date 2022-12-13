@@ -1,4 +1,4 @@
-# LearningPostgre
+# LearningPostgreSQL
 Public access to the code created in a series of articles as I learn PostgreSQL.
 
 The whole series is available at Simple-Talk, starting here:
