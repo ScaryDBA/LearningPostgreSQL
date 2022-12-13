@@ -1,39 +1,83 @@
+--## BTree indexes
 --defaults
-CREATE INDEX radios_radioname ON radio.radios(radio_name);
+create index radios_radioname on
+radio.radios(radio_name);
 
 --defining index type
-CREATE INDEX radios_radioname ON radio.radios USING BTREE(radio_name);
-
-DROP INDEX if EXISTS radio.radios_radioname;
-
---compound keys
-CREATE INDEX radios_radioname_radioid ON radio.radios USING BTREE(radio_name, radio_id);
-
-DROP INDEX IF EXISTS radio.radios_radioname_radioid;
-
---uniqe
-CREATE UNIQUE INDEX radios_radioid_unique ON radio.radios USING BTREE(radio_id);
-
-DROP INDEX IF EXISTS radio.radios_radioid_unique;
-
---defining order
-CREATE INDEX radios_radioname ON radio.radios USING BTREE(radio_name DESC NULLS FIRST);
-
-DROP INDEX IF EXISTS radio.radios_radioname;
-
---include
-CREATE INDEX radios_radioid ON radio.radios USING BTREE(radio_id) INCLUDE(radio_name);
-
-DROP INDEX IF EXISTS radio.radios_radioid;
-
---partial/filtered
-CREATE INDEX radios_radioname ON radio.radios USING BTREE(radio_name)
-WHERE radio_name IS NOT NULL;
-
+create index radios_radioname on
+radio.radios
+	using BTREE(radio_name);
 
 drop index if exists radio.radios_radioname;
 
+--compound keys
+create index radios_radioname_radioid on
+radio.radios
+	using BTREE(radio_name,
+radio_id);
 
---Hash Indexes
+drop index if exists radio.radios_radioname_radioid;
 
-CREATE INDEX bands_band_name ON radio.bands USING HASH(band_name);
+--uniqe
+create unique index radios_radioid_unique on
+radio.radios
+	using BTREE(radio_id);
+
+drop index if exists radio.radios_radioid_unique;
+
+--defining order
+create index radios_radioname on
+radio.radios
+	using BTREE(radio_name desc nulls first);
+
+drop index if exists radio.radios_radioname;
+
+--include
+create index radios_radioid on
+radio.radios
+	using BTREE(radio_id) include(radio_name);
+
+drop index if exists radio.radios_radioid;
+
+--partial/filtered
+create index radios_radioname on
+radio.radios
+	using BTREE(radio_name)
+where
+radio_name is not null;
+
+drop index if exists radio.radios_radioname;
+--clean all indexes using the drop statements
+--## Hash Indexes
+
+create index bands_band_name on
+radio.bands
+	using HASH(band_name);
+
+--partial/filtered hash index
+create index logs_log_date on
+logging.logs
+	using HASH(log_date)
+where
+log_date > '1/1/2020';
+
+--## GiST indexes
+create index logs_location on
+logging.logs
+	using gist(log_location);
+
+drop index if exists logging.logs_location;
+
+--## SP-GIST indexes
+create index logs_location on logging.logs using spgist(log_location);
+
+--## GIN indexes 
+create index parksontheair_contacts on logging.parksontheair using GIN(contacts);
+
+drop index if exists logging.parksontheair_contacts;
+
+
+--## BRIN indexes 
+create index logs_log_date on logging.logs using BRIN(logs_log_date);
+
+
