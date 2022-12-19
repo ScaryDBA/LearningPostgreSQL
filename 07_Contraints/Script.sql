@@ -128,6 +128,13 @@ drop table if exists public.nullnotunique;
 drop table if exists public.nullunique;
 
 
---
+--Primary key
+create table if not exists public.pkexample
+(id int primary key not null,
+somevalue varchar(50));
+
+
+--Foreign key
+
 
 
