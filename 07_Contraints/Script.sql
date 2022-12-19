@@ -135,6 +135,47 @@ somevalue varchar(50));
 
 
 --Foreign key
+ALTER TABLE radio.radios
+ADD foreign key (manufacturer_id) references radio.manufacturers;
+
+--remove and readd the foreign key 
+alter table radio.radios drop constraint radios_manufacturer_id_fkey;
+
+alter table radio.radios add constraint 
+radios_fk_manufacturer foreign key (manufacturer_id) references radio.manufacturers;
+
+--defining a foreign key as part of the table definition
+create table if not exists radio.radios
+	(radio_id int constraint pkradios primary key generated always as identity,
+	radio_name varchar(100) not null,
+	manufacturer_id int not null,
+	picture BYTEA null,
+	connectortype_id int not null,
+	digitalmode_id int null,
+	constraint radios_fk_manufacturer foreign key (manufacturer_id) references radio.manufacturers 
+	);
+
+--adding RESTRICT
+create table if not exists radio.radios
+	(radio_id int constraint pkradios primary key generated always as identity,
+	radio_name varchar(100) not null,
+	manufacturer_id int not null,
+	picture BYTEA null,
+	connectortype_id int not null,
+	digitalmode_id int null,
+	constraint radios_fk_manufacturer foreign key (manufacturer_id) references radio.manufacturers on delete restrict
+	);
+
+--changing it to cascade
+create table if not exists radio.radios
+	(radio_id int constraint pkradios primary key generated always as identity,
+	radio_name varchar(100) not null,
+	manufacturer_id int not null,
+	picture BYTEA null,
+	connectortype_id int not null,
+	digitalmode_id int null,
+	constraint radios_fk_manufacturer foreign key (manufacturer_id) references radio.manufacturers on delete cascade 
+	);
 
 
 
