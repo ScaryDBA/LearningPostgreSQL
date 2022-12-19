@@ -74,7 +74,60 @@ create table if not exists public.uniqueval4
 drop table if exists public.uniqueval3;
 drop table if exists public.uniqueval4;
 
+--using alter table to add a constraint
+--create a table without a constraint
+create table if not exists public.uniqueval5
+	(id int not null,
+	myuniquevalue varchar(50) null);
+
+--now add the constraint
+alter table public.uniqueval5
+add constraint mynewconstraint unique(myuniquevalue);
+
+dropt table if exists public.uniqueval5 
 
 
+--dealing with null values 
+create table if not exists public.nullnotunique
+	(id int not null,
+	nonuniqueval varchar(50) constraint notunique unique null);
+
+insert
+	into
+	public.nullnotunique
+(id,
+	nonuniqueval)
+values
+(1,
+null),
+(2,
+null),
+(3,
+'one');
+
+
+create table if not exists public.nullunique
+	(id int not null,
+	uniqueval varchar(50) constraint nowunique unique nulls not distinct null);
+
+insert
+	into
+	public.nullunique
+(id,
+	uniqueval)
+values
+(1,
+null),
+(2,
+null),
+(3,
+'one');
+
+
+drop table if exists public.nullnotunique;
+drop table if exists public.nullunique;
+
+
+--
 
 
