@@ -135,13 +135,17 @@ GRANT USAGE ON SCHEMA logging TO postgres;
 
 CREATE TABLE IF NOT EXISTS logging.logs
 (log_id int CONSTRAINT pklogs PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-log_date timestamp NOT NULL,
-log_callsign varchar(10),
+log_date timestamptz  NOT NULL,
+log_callsign text,
 log_location point NOT NULL);
 
 CREATE TABLE IF NOT EXISTS logging.parksontheair
 (parksontheair_id int CONSTRAINT pkparksontheair PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 contacts text[]);
+
+--making sure I have this extension
+CREATE EXTENSION btree_gist;
+
 
 
 
