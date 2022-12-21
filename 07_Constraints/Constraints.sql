@@ -178,4 +178,48 @@ create table if not exists radio.radios
 	);
 
 
+--Check constraints 
+CREATE TABLE IF NOT EXISTS radio.bands
+(band_id int CONSTRAINT pkbands PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+ band_name varchar(100) NOT NULL,
+ frequency_start_khz numeric(9,2) NOT NULL,
+ frequency_end_khz numeric(9,2) NOT NULL,
+ country_id int NOT NULL);
+
+alter table radio.bands 
+add constraint minfrequency check (frequency_start_khz > 135.7);
+
+
+--another constraint comparing columns
+ALTER TABLE radio.bands
+ADD CONSTRAINT startlessthanend CHECK (frequency_start_khz < frequency_end_khz);
+
+
+--exclusion constraint 
+CREATE EXTENSION btree_gist;
+
+
+
+
+alter table logging.logs
+add constraint uniquecontact exclude
+	using gist (log_date with =,
+	log_callsign  with =,
+log_location with ~=);
+
+
+INSERT INTO logging.logs
+(log_date,log_callsign,log_location)
+VALUES
+('12/21/2022','KC1KCE','35.952, -96.152'),
+('12/21/2022','KC1KCE','35.957, -96.127');
+
+INSERT INTO logging.logs
+(log_date,log_callsign,log_location)
+VALUES
+('12/21/2022','KC1KCE','35.952, -96.152');
+
+
+
+
 
