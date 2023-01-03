@@ -12,7 +12,7 @@ CREATE DATABASE hamshackradio;
 
 CREATE SCHEMA radio;
 
-GRANT USAGE ON SCHEMA radio TO postgres
+GRANT USAGE ON SCHEMA radio TO postgres;
 
 --radios is the root of the whole thing
 CREATE TABLE IF NOT EXISTS radio.radios
