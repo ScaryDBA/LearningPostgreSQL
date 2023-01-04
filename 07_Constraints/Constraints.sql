@@ -187,7 +187,7 @@ CREATE TABLE IF NOT EXISTS radio.bands
  country_id int NOT NULL);
 
 alter table radio.bands 
-add constraint minfrequency check (frequency_start_khz > 135.7);
+add constraint minfrequency check (frequency_start_khz >= 135.7);
 
 
 --another constraint comparing columns
