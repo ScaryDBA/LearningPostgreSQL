@@ -44,24 +44,10 @@ drop schema if exists mytestschema cascade;
 drop schema if exists secondschema cascade;
 
 
---checking the schema search path
 show search_path;
 
-
-
---adding a schema to the search list
-SET search_path TO radio,public;
-
-
---changing schema security
-CREATE SCHEMA secureschema AUTHORIZATION radio_admin;
-
-
---revoking ability to create objects on public schema 
-REVOKE CREATE ON SCHEMA public FROM PUBLIC;
-
-
-
+drop schema if exists public cascade;
+create schema public;
 
 
 

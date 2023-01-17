@@ -35,6 +35,18 @@ where
 	ccu.table_name = 'radios';
 	
 
+--listing column names in a table that are nullable
+select column_name
+from  information_schema.columns
+where table_catalog = 'hamshackradio'
+  and table_schema = 'radio'
+  and table_name = 'radios'
+  and is_nullable = 'YES'
+
+
+ 
+  
+
 -- example 1 unique constraint
 CREATE TABLE IF NOT EXISTS public.uniqueval1
 	(id int not null,
@@ -51,7 +63,18 @@ where
 	i.tablename = 'uniqueval1';
 
 
+
+
+--creating a filtered unique index
+CREATE UNIQUE INDEX uniqueval_notnull_idx ON public.nullunique (ComputedUniqueeval)
+WHERE uniqueval IS NULL;
+
+
 drop table if exists public.uniqueval1;
+
+
+
+
 
 --example unique column constraint
 create table if not exists public.uniqueval2
@@ -134,6 +157,31 @@ create table if not exists public.pkexample
 somevalue varchar(50));
 
 
+--bad example
+create table if not exists public.badpkexample
+(id int null,
+somevalue varchar(50));
+Check the results of the following metadata query:
+select is_nullable
+from   information_schema.columns
+where table_schema = 'public'
+and   table_name = 'badpkexample'
+and   column_name = 'id';
+
+
+
+alter table public.badpkexample
+  add constraint PKbadpkexample
+     primary key (id);
+
+    
+    
+    
+--clean up
+DROP TABLE IF EXISTS public.badpkexample;
+
+
+
 --Foreign key
 ALTER TABLE radio.radios
 ADD foreign key (manufacturer_id) references radio.manufacturers;
@@ -178,6 +226,10 @@ create table if not exists radio.radios
 	);
 
 
+
+
+
+
 --Check constraints 
 CREATE TABLE IF NOT EXISTS radio.bands
 (band_id int CONSTRAINT pkbands PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -187,13 +239,55 @@ CREATE TABLE IF NOT EXISTS radio.bands
  country_id int NOT NULL);
 
 alter table radio.bands 
-add constraint minfrequency check (frequency_start_khz > 135.7);
+add constraint minfrequency check (frequency_start_khz >= 135.7);
 
 
 --another constraint comparing columns
 ALTER TABLE radio.bands
 ADD CONSTRAINT startlessthanend CHECK (frequency_start_khz < frequency_end_khz);
 
+
+--null constraint 
+create table public.nullconstraintcheck
+(
+      id    int not null,
+      value int NULL
+); 
+
+--adding constraint
+alter table public.nullconstraintcheck
+  add constraint valueEquals1 
+     check (value = 1);
+
+
+    
+--code wil fail
+insert into public.nullconstraintcheck(id, value)
+values (1,1); 
+insert into public.nullconstraintcheck(id, value)
+values (2,2);
+    
+
+--code will succeed
+insert into public.nullconstraintcheck(id, value)
+values (3,NULL);
+
+
+--changing the table to get better behavior
+alter table public.nullconstraintcheck
+     drop constraint valueEquals1;
+alter table public.nullconstraintcheck
+  add constraint valueEquals1 
+  	check ((value is not null and value = 1)
+		   OR (id < 5 and value = 1));
+
+insert into public.nullconstraintcheck(id,value)
+values (4,NULL);
+
+insert into public.nullconstraintcheck(id,value)
+values (5,NULL);
+
+    
 
 --exclusion constraint 
 CREATE EXTENSION btree_gist;
