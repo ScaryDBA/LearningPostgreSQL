@@ -7,7 +7,7 @@ VALUES
 INSERT INTO radio.countries
 (country_name)
 VALUES
-('USA'),('Great Britain');
+('USA'),('United Kingdom');
 
 INSERT INTO radio.bands
 (band_name,frequency_start_khz,frequency_end_khz,country_id)
