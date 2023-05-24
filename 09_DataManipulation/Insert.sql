@@ -8,7 +8,7 @@ INSERT
 	digitalmode_id)
 VALUES
 ('GD-88',
-9,
+7,
 3,
 2);
 

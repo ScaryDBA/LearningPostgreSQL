@@ -78,4 +78,9 @@ WHERE
 	ps.tablename = 'countries';
 
 --VERBOSE and ANALYZE 
+DELETE FROM radio.countries 
+WHERE country_id BETWEEN 3 AND 12000;
+
+ANALYZE (VERBOSE) radio.countries;
+
 

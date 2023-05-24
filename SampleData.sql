@@ -2,7 +2,7 @@
 INSERT INTO radio.manufacturers
 (manufacturer_name)
 VALUES
-('Yeasu'),('Icom'),('Baofeng'),('BTech'),('TidRadio'),('Xiegu');
+('Yeasu'),('Icom'),('Baofeng'),('BTech'),('TidRadio'),('Xiegu'),('Raddiodity');
 
 INSERT INTO radio.countries
 (country_name)
