@@ -1,10 +1,10 @@
 --reset the database
 --connect first to postgres database
 
-DROP DATABASE IF EXISTS hamshackradio;
+--DROP DATABASE IF EXISTS hamshackradio;
 
 
-CREATE DATABASE hamshackradio;
+--CREATE DATABASE hamshackradio;
 
 --connect to hamshackradio
 --start with a radio schema
