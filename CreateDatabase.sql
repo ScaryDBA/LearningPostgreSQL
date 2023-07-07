@@ -2,8 +2,6 @@
 --connect first to postgres database
 
 --DROP DATABASE IF EXISTS hamshackradio;
-
-
 --CREATE DATABASE hamshackradio;
 
 --connect to hamshackradio

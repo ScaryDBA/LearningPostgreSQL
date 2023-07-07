@@ -67,5 +67,14 @@ INSERT INTO logging.parksontheair
 VALUES
 (ARRAY['KC1KCE', 'KI5EGH', 'KJ7VSF','N4DAD','KD7IFN']),
 (ARRAY['KN4XP','KA0GAV','NM8GS','W3DET']),
-(ARRAY['W3DET','N4AUG','KC3WRX','WA9EBX','W1OW','K4RFH','W9DC','WJ8L','N4HES'])
+(ARRAY['W3DET','N4AUG','KC3WRX','WA9EBX','W1OW','K4RFH','W9DC','WJ8L','N4HES']);
+
+INSERT INTO radio.radiobands
+(radio_id, band_id)
+VALUES
+(1,1),(1,2),(1,4),(1,5),
+(2,1),(2,2),
+(3,3),(3,6);
+
+
 
