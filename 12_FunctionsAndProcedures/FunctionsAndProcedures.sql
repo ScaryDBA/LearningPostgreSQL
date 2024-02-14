@@ -127,3 +127,13 @@ END IF;
 END
 $$ 
 LANGUAGE plpgsql;
+
+
+
+--call new procedure
+CALL radio.newantenna('2 Meter short', 8, 2);
+
+
+
+SELECT * FROM radio.manufacturers m 
+
