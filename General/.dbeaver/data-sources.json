@@ -1,25 +1,29 @@
 {
 	"folders": {},
 	"connections": {
-		"postgres-jdbc-1850be491d9-4a402cb27870ec32": {
+		"postgres-jdbc-1938d5f2464-4f4d964684280fbb": {
 			"provider": "postgresql",
 			"driver": "postgres-jdbc",
-			"name": "hamshackradio",
+			"name": "postgres",
 			"save-password": true,
 			"configuration": {
 				"host": "localhost",
 				"port": "5432",
-				"database": "hamshackradio",
-				"url": "jdbc:postgresql://localhost:5432/hamshackradio",
+				"database": "postgres",
+				"url": "jdbc:postgresql://localhost:5432/postgres",
 				"configurationType": "MANUAL",
-				"home": "postgresql_client",
+				"home": "postgresql-x64-16",
 				"type": "dev",
-				"closeIdleConnection": false,
+				"closeIdleConnection": true,
 				"provider-properties": {
-					"@dbeaver-show-non-default-db@": "false",
+					"@dbeaver-show-non-default-db@": "true",
 					"@dbeaver-chosen-role@": ""
 				},
 				"auth-model": "native"
+			},
+			"custom-properties": {
+				"sql.format.break.before.close.bracket": "true",
+				"sql.format.keywordCase": "UPPER"
 			}
 		}
 	},
@@ -32,7 +36,7 @@
 			"confirm-execute": false,
 			"confirm-data-change": false,
 			"smart-commit": false,
-			"smart-commit-recover": false,
+			"smart-commit-recover": true,
 			"auto-close-transactions": true,
 			"close-transactions-period": 1800,
 			"auto-close-connections": true,

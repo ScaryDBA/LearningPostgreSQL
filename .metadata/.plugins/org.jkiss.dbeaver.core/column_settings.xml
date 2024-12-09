@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item id="DatabaseInstanceSelector">
+		<column name="Name" visible="true" order="0" width="107"/>
+		<column name="Description" visible="true" order="1" width="100"/>
+	</item>
+	<item id="SchemaSelector">
+		<column name="Name" visible="true" order="0" width="160"/>
+		<column name="Comment" visible="true" order="1" width="143"/>
+	</item>
+</items>

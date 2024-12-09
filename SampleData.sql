@@ -1,3 +1,4 @@
+
 --sample data for the hamradio db
 INSERT INTO radio.manufacturers
 (manufacturer_name)

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<drivers>
+	<provider id="postgresql">
+		<driver id="postgres-jdbc" categories="sql" name="PostgreSQL" class="org.postgresql.Driver" url="jdbc:postgresql://{host}[:{port}]/[{database}]" port="5432" defaultDatabase="postgres" defaultUser="postgres" description="PostgreSQL standard driver" custom="false">
+			<library type="jar" path="maven:/org.postgresql:postgresql:RELEASE" custom="false" version="42.7.2">
+				<file id="org.postgresql:postgresql:RELEASE" version="42.7.2" path="${home}\OneDrive\Documents\GitHub\drivers\maven\maven-central\org.postgresql\postgresql-42.7.2.jar"/>
+				<file id="org.checkerframework:checker-qual:3.42.0" version="3.42.0" path="${home}\OneDrive\Documents\GitHub\drivers\maven\maven-central\org.checkerframework\checker-qual-3.42.0.jar"/>
+			</library>
+			<library type="jar" path="maven:/net.postgis:postgis-jdbc:RELEASE" custom="false" version="2.5.0" ignore-dependencies="true">
+				<file id="net.postgis:postgis-jdbc:RELEASE" version="2.5.0" path="${home}\OneDrive\Documents\GitHub\drivers\maven\maven-central\net.postgis\postgis-jdbc-2.5.0.jar"/>
+			</library>
+			<library type="jar" path="maven:/net.postgis:postgis-geometry:RELEASE" custom="false" version="2.5.0" ignore-dependencies="true">
+				<file id="net.postgis:postgis-geometry:RELEASE" version="2.5.0" path="${home}\OneDrive\Documents\GitHub\drivers\maven\maven-central\net.postgis\postgis-geometry-2.5.0.jar"/>
+			</library>
+			<library type="jar" path="maven:/com.github.waffle:waffle-jna:RELEASE" custom="false" version="1.9.1">
+				<file id="com.github.waffle:waffle-jna:RELEASE" version="1.9.1" path="${home}\OneDrive\Documents\GitHub\drivers\maven\maven-central\com.github.waffle\waffle-jna-1.9.1.jar"/>
+				<file id="net.java.dev.jna:jna:4.5.1" version="4.5.1" path="${home}\OneDrive\Documents\GitHub\drivers\maven\maven-central\net.java.dev.jna\jna-4.5.1.jar"/>
+				<file id="net.java.dev.jna:jna-platform:4.5.1" version="4.5.1" path="${home}\OneDrive\Documents\GitHub\drivers\maven\maven-central\net.java.dev.jna\jna-platform-4.5.1.jar"/>
+				<file id="org.slf4j:jcl-over-slf4j:1.7.25" version="1.7.25" path="${home}\OneDrive\Documents\GitHub\drivers\maven\maven-central\org.slf4j\jcl-over-slf4j-1.7.25.jar"/>
+				<file id="org.slf4j:slf4j-api:1.7.25" version="1.7.25" path="${home}\OneDrive\Documents\GitHub\drivers\maven\maven-central\org.slf4j\slf4j-api-1.7.25.jar"/>
+				<file id="com.github.ben-manes.caffeine:caffeine:2.6.2" version="2.6.2" path="${home}\OneDrive\Documents\GitHub\drivers\maven\maven-central\com.github.ben-manes.caffeine\caffeine-2.6.2.jar"/>
+			</library>
+			<library type="license" path="https://raw.githubusercontent.com/pgjdbc/pgjdbc/master/LICENSE" custom="false">
+				<file id="https://raw.githubusercontent.com/pgjdbc/pgjdbc/master/LICENSE" path="${home}\OneDrive\Documents\GitHub\drivers\remote\pgjdbc\pgjdbc\master\LICENSE"/>
+			</library>
+		</driver>
+	</provider>
+</drivers>
